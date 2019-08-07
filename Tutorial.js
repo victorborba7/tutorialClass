@@ -18,6 +18,8 @@ class Tutorial{
     }
 
     showStep() {
+        this.checkBOT();
+        this.checkEOT();
         if (this.currentStep != this.lastStep) {
             this.removeDivMain();
             this.unhighlightObject();
@@ -123,6 +125,7 @@ class Tutorial{
         let divFooter = document.createElement("DIV");
         divFooter.appendChild(this.btnPrevious);
         divFooter.appendChild(this.btnNext);
+        divFooter.appendChild(this.btnConclude);
         divFooter.style.paddingLeft = "10px";
         divFooter.style.paddingRight = "10px";
         divFooter.style.marginTop = "5px";
@@ -146,12 +149,14 @@ class Tutorial{
     }
 
     configureBtnConclude() {
-        this.btnConclude("click", () => {
+        this.btnConclude.addEventListener("click", () => {
+            this.lastStep = this.currentStep;
             this.removeDivMain();
-            removeBackDiv();
+            this.removeBackDiv();
+            this.unhighlightObject();
         });
-        this.btnPrevious.className = "btn btn-primary pull-left hidden";
-        this.btnPrevious.innerHTML = "Finalizar";
+        this.btnConclude.className = "btn btn-primary pull-right";
+        this.btnConclude.innerHTML = "Finalizar";
     }
 
     highlightObject() {
@@ -166,5 +171,23 @@ class Tutorial{
         elem.style.boxShadow = "";
         elem.style.position = "";
         elem.style.zIndex = "";
+    }
+
+    checkEOT() {
+        if (this.currentStep == this.steps.length - 1) {
+            this.btnNext.style.display = "none";
+            this.btnConclude.style.display = "";
+        } else {
+            this.btnNext.style.display = "";
+            this.btnConclude.style.display = "none";
+        }
+    }
+
+    checkBOT() {
+        if (this.currentStep == 0) {
+            this.btnPrevious.style.display = "none";
+        } else {
+            this.btnPrevious.style.display = "";
+        }
     }
 }
