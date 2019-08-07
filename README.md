@@ -1,4 +1,4 @@
-# Build Tutorials
+# Build Tutorials (in Development)
 A simple class in javascript to build tutorials for users.
 
 1. Download the Tutorial.js and include to your project.
