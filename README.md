@@ -1,2 +1,2 @@
-# tutorialClass
-A simple class to build tutorials for users.
+# Build Tutorials
+A simple class in javascript to build tutorials for users.
