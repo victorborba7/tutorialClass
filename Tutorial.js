@@ -193,3 +193,6 @@ class Tutorial{
         }
     }
 }
+
+//Limites da tela
+//Botão de fechar
