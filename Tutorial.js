@@ -71,7 +71,7 @@ class Tutorial{
         darkDiv.style.width = "100%";
         darkDiv.style.height = "100%";
         darkDiv.style.backgroundColor = "#000";
-        darkDiv.style.opacity = "0.6";
+        darkDiv.style.opacity = "0.4";
         darkDiv.style.filter = "alpha(opacity=60)";
         darkDiv.style.zIndex = "5";
         darkDiv.style.display = "block";
@@ -93,13 +93,13 @@ class Tutorial{
         let elem = document.querySelector("#" + this.steps[this.currentStep].id);
         this.div.style.position = "absolute";
         this.div.style.zIndex = "15";
-        this.div.style.width = "15%";
-        this.div.style.height = "20%";
-        this.div.style.top = elem.getBoundingClientRect().y / 4 + "px";
+        this.div.style.width = "15%"
+        this.div.style.top = elem.getBoundingClientRect().y / 2 + "px";
         this.div.style.left = elem.getBoundingClientRect().x + elem.getBoundingClientRect().width + "px";
         this.div.style.backgroundColor = "#fff";
         this.div.style.borderRadius = "25px";
         this.div.style.border = "2px solid blue";
+        this.div.style.padding = "10px";
         this.div.setAttribute("id", "tutorialStep");
     }
 
@@ -116,8 +116,8 @@ class Tutorial{
         let divBody = document.createElement("DIV");
         divBody.appendChild(document.createTextNode(this.steps[this.currentStep].text));
         divBody.style.textAlign = "justify";
-        divBody.style.paddingLeft = "5px";
-        divBody.style.paddingRight = "5px";
+        divBody.style.padding = "5px";
+        divBody.style.borderBottom = "2px solid grey";
         return divBody;
     }
 
@@ -154,6 +154,8 @@ class Tutorial{
             this.removeDivMain();
             this.removeBackDiv();
             this.unhighlightObject();
+            this.currentStep = 0;
+            this.lastStep = 0;
         });
         this.btnConclude.className = "btn btn-primary pull-right";
         this.btnConclude.innerHTML = "Finalizar";
